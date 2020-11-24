@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Patient {
     private String numSecu;
     private String name;
@@ -15,6 +17,23 @@ public class Patient {
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public static void addPatient(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Numéro de Sécurité Sociale :");
+        String secu = scanner.nextLine();
+        System.out.println("Nom : ");
+        String lastName = scanner.nextLine();
+        System.out.println("Prénom :");
+        String name = scanner.nextLine();
+        System.out.println("Adresse :");
+        String adress = scanner.nextLine();
+        System.out.println("Numéro de téléphone :");
+        String phoneNumber = scanner.nextLine();
+        System.out.println("Email :");
+        String email = scanner.nextLine();
+        Patient patient = new Patient(secu, lastName, name, adress, phoneNumber, email);
     }
 
     public String getNumSecu() {
