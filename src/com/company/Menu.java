@@ -61,10 +61,10 @@ public class Menu {
                             break;
                     }
                     break;
-                case 2:
+                case 4:
                     System.out.println("EN CONSTRUCTION");
                     break;
-                case 3:
+                case 5:
                     boolean ajoutMusique = false;
                     while (ajoutMusique == false){
                     List<Musique> listeMusique = new LinkedList<>();
@@ -85,52 +85,8 @@ public class Menu {
                         }
                         }
                     break;
-                case 4:
+                case 6:
                     System.out.println("nom playlist");
-                    break;
-                        case 3:
-                            System.out.println("Choisissez votre option : ");
-                            System.out.println("1 : Ajout d'un Praticien");
-                            System.out.println("2 : Retirer un Praticien");
-                            System.out.println("3 : Afficher les Praticiens");
-                            input = scanner.nextInt();
-                            switch (input){
-                                case 1:
-                                    Praticien.addPraticien();
-                                    break;
-                                case 2:
-                                    Praticien.retirerPraticien();
-                                    break;
-                                case 3:
-                                    Praticien.showPraticien();
-                                    break;
-                            }
-                            break;
-                    }
-                    break;
-                case 2:
-                    System.out.println("1 : Ajouter une musique");
-                    System.out.println("2 : Voir playlist");
-                    input = scanner.nextInt();
-                    switch (input) {
-                        case 1:
-                            List<Musique> listeMusique = new LinkedList<>();
-                            Scanner scannerMusique = new Scanner(System.in);
-                            System.out.println("nom artiste");
-                            String nomArtiste = scannerMusique.nextLine();
-                            System.out.println("nom musique");
-                            String nomMusique = scannerMusique.nextLine();
-                            Musique musique1 = new Musique(nomMusique, nomArtiste);
-                            listeMusique.add(musique1);
-                            Musique musique2 = new Musique("balba", "dpuabfa");
-                            listeMusique.add(musique2);
-                            Playlist playlist = new Playlist(nomArtiste + "--->", listeMusique);
-                            playlist.afficherPlaylist();
-                            break;
-                        case 2:
-                            System.out.println("nom playlist");
-                            break;
-                    }
                     break;
             }
         } catch (Exception e) {
