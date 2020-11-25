@@ -16,10 +16,14 @@ public class Menu {
                     System.out.println("\n -- Administration du groupe -- \n");
                     System.out.println("Choisissez votre option :");
                     System.out.println("1 : Ajouter Patient");
+                    System.out.println("2 : Ajouter Hopital");
                     input = scanner.nextInt();
                     switch (input){
                         case 1:
                             Patient.addPatient();
+                            break;
+                        case 2:
+                            Hopital.addHopital();
                             break;
                     }
                     break;
