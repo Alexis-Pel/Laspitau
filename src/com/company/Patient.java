@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Patient {
@@ -9,6 +11,7 @@ public class Patient {
     private String adress;
     private String phoneNumber;
     private String email;
+    public static List<Patient> listePatients = new ArrayList<>();
 
     public Patient(String numSecu, String name, String lastName, String adress, String phoneNumber, String email) {
         this.numSecu = numSecu;
@@ -34,6 +37,17 @@ public class Patient {
         System.out.println("Email :");
         String email = scanner.nextLine();
         Patient patient = new Patient(secu, lastName, name, adress, phoneNumber, email);
+        listePatients.add(patient);
+        System.out.println("Ajouter un autre patient ? O / N");
+        String input = scanner.next();
+        switch (input){
+            case "O":
+                addPatient();
+                break;
+            case "N":
+                Menu.menu();
+                break;
+        }
     }
 
     public String getNumSecu() {
