@@ -10,46 +10,66 @@ public class Menu {
         System.out.println("---- Bienvenue dans le logiciel du groupe Laspitau ----\n");
         System.out.println("Choisissez votre option :");
         System.out.println("1 : Administration ");
-        System.out.println("2 : Entertainment");
-        System.out.println("3 : Ajouter une musique");
-        System.out.println("' : Voir playlist");
+        System.out.println("2 : Animation");
         int input = scanner.nextInt();
-        try{
-            switch (input){
+        try {
+            switch (input) {
                 case 1:
                     System.out.println("\n -- Administration du groupe -- \n");
+                    if (!Hopital.listeHopitaux.isEmpty()){
+                        System.out.println(" - Hôpital " + Hopital.listeHopitaux.get(Hopital.actuelHopital).getName() + " -");
+                    }
                     System.out.println("Choisissez votre option :");
-                    System.out.println("1 : Ajouter Patient");
-                    System.out.println("2 : Ajouter Hopital");
+                    if(Hopital.listeHopitaux.isEmpty()) {
+                        System.out.println("1 : Ajouter Hopital");
+                        input = scanner.nextInt();
+                        switch (input) {
+                            case 1:
+                                Hopital.addHopital();
+                                break;
+                        }
+                        menu();
+                    }
+                    System.out.println("1 : Changer d'Hôpital");
+                    System.out.println("2 : Ajouter Patient");
+                    System.out.println("3 : Ajouter Praticien");
                     input = scanner.nextInt();
-                    switch (input){
+                    switch (input) {
                         case 1:
-                            Patient.addPatient();
+                            Hopital.changeHospital();
                             break;
                         case 2:
-                            Hopital.addHopital();
+                            Patient.addPatient();
+                            break;
+                        case 3:
+                            Praticien.addPraticien();
                             break;
                     }
                     break;
                 case 2:
-                    System.out.println("EN CONSTRUCTION");
+                    System.out.println("1 : Ajouter une musique");
+                    System.out.println("2 : Voir playlist");
+                    input = scanner.nextInt();
+                    switch (input) {
+                        case 1:
+                            List<Musique> listeMusique = new LinkedList<>();
+                            Scanner scannerMusique = new Scanner(System.in);
+                            System.out.println("nom artiste");
+                            String nomArtiste = scannerMusique.nextLine();
+                            System.out.println("nom musique");
+                            String nomMusique = scannerMusique.nextLine();
+                            Musique musique1 = new Musique(nomMusique, nomArtiste);
+                            listeMusique.add(musique1);
+                            Musique musique2 = new Musique("balba", "dpuabfa");
+                            listeMusique.add(musique2);
+                            Playlist playlist = new Playlist(nomArtiste + "--->", listeMusique);
+                            playlist.afficherPlaylist();
+                            break;
+                        case 2:
+                            System.out.println("nom playlist");
+                            break;
+                    }
                     break;
-                case 3:
-                    List<Musique> listeMusique = new LinkedList<>();
-                    Scanner scannerMusique = new Scanner(System.in);
-                    System.out.println("nom artiste");
-                    String nomArtiste = scannerMusique.nextLine();
-                    System.out.println("nom musique");
-                    String nomMusique = scannerMusique.nextLine();
-                    Musique musique1 = new Musique(nomMusique, nomArtiste);
-                    listeMusique.add(musique1);
-                    Musique musique2 = new Musique("balba", "dpuabfa");
-                    listeMusique.add(musique2);
-                    Playlist playlist = new Playlist(nomArtiste + "--->",listeMusique);
-                    playlist.afficherPlaylist();
-                    break;
-                case 4:
-                    System.out.println("nom playlist");
             }
         } catch (Exception e) {
             e.printStackTrace();
