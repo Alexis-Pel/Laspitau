@@ -50,6 +50,34 @@ public class Praticien {
                 break;
         }
     }
+    public static void retirerPraticien(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez entrer le numéro de Matricule du praticien à retirer :");
+        String input = scanner.nextLine();
+        try{
+            for (int i = 0; i < listePraticien.size(); i++) {
+                if (listePraticien.get(i).matriculNumber.equals(input)){
+                    listePraticien.remove(i);
+                    System.out.println(" Praticien supprimé avec succès\n");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void showPraticien(){
+        if(listePraticien.isEmpty()){
+            System.out.println("Veuillez ajouter des praticiens\n");
+            Menu.menu();
+        }
+        for (int i = 0; i < listePraticien.size(); i++) {
+            int hospital = listePraticien.get(i).whichHospital;
+            if(hospital == Hopital.actuelHopital){
+                System.out.println(listePraticien.get(i).getName() + " " + listePraticien.get(i).getLastName() + " Matricule : " + listePraticien.get(i).getMatriculNumber());
+            }
+        }
+    }
 
     public String getMatriculNumber() {
         return matriculNumber;

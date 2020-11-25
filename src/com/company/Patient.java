@@ -11,15 +11,17 @@ public class Patient {
     private String adress;
     private String phoneNumber;
     private String email;
+    private int whichHospital;
     public static List<Patient> listePatients = new ArrayList<>();
 
-    public Patient(String numSecu, String name, String lastName, String adress, String phoneNumber, String email) {
+    public Patient(String numSecu, String name, String lastName, String adress, String phoneNumber, String email){
         this.numSecu = numSecu;
         this.name = name;
         this.lastName = lastName;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.whichHospital = Hopital.actuelHopital;
     }
 
     public static void addPatient(){
@@ -47,6 +49,35 @@ public class Patient {
             case "N":
                 Menu.menu();
                 break;
+        }
+    }
+
+    public static void retirerPatient(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez entrer le numéro de Sécurité Sociale du patient à retirer :");
+        String input = scanner.nextLine();
+        try{
+            for (int i = 0; i < listePatients.size(); i++) {
+                if (listePatients.get(i).numSecu.equals(input)){
+                    listePatients.remove(i);
+                    System.out.println(" Patient supprimé avec succès\n");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void showPatient(){
+        if(listePatients.isEmpty()){
+            System.out.println("Veuillez ajouter des patients\n");
+            Menu.menu();
+        }
+        for (int i = 0; i < listePatients.size(); i++) {
+            int hospital = listePatients.get(i).whichHospital;
+            if(hospital == Hopital.actuelHopital){
+                System.out.println(listePatients.get(i).getName() + " " + listePatients.get(i).getLastName() + " Sécu : " + listePatients.get(i).getNumSecu());
+            }
         }
     }
 
