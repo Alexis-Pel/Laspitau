@@ -10,7 +10,6 @@ public class Menu {
         System.out.println("---- Bienvenue dans le logiciel du groupe Laspitau ----\n");
         System.out.println("Choisissez votre option :");
         System.out.println("1 : Administration ");
-        System.out.println("2 : Animation");
         System.out.println("2 : Entertainment");
         System.out.println("3 : Ajouter une musique");
         System.out.println("4 : Voir playlist");
@@ -61,10 +60,7 @@ public class Menu {
                             break;
                     }
                     break;
-                case 4:
-                    System.out.println("EN CONSTRUCTION");
-                    break;
-                case 5:
+                case 3:
                     boolean ajoutMusique = false;
                     while (ajoutMusique == false){
                     List<Musique> listeMusique = new LinkedList<>();
@@ -85,7 +81,7 @@ public class Menu {
                         }
                         }
                     break;
-                case 6:
+                case 4:
                     System.out.println("nom playlist");
                     break;
             }
