@@ -12,7 +12,7 @@ public class Menu {
         System.out.println("1 : Administration ");
         System.out.println("2 : Entertainment");
         System.out.println("3 : Ajouter une musique");
-        System.out.println("' : Voir playlist");
+        System.out.println("4 : Voir playlist");
         int input = scanner.nextInt();
         try{
             switch (input){
@@ -35,6 +35,8 @@ public class Menu {
                     System.out.println("EN CONSTRUCTION");
                     break;
                 case 3:
+                    boolean ajoutMusique = false;
+                    while (ajoutMusique == false){
                     List<Musique> listeMusique = new LinkedList<>();
                     Scanner scannerMusique = new Scanner(System.in);
                     System.out.println("nom artiste");
@@ -43,13 +45,19 @@ public class Menu {
                     String nomMusique = scannerMusique.nextLine();
                     Musique musique1 = new Musique(nomMusique, nomArtiste);
                     listeMusique.add(musique1);
-                    Musique musique2 = new Musique("balba", "dpuabfa");
-                    listeMusique.add(musique2);
                     Playlist playlist = new Playlist(nomArtiste + "--->",listeMusique);
                     playlist.afficherPlaylist();
+                    System.out.println("Voulez-vous quitter ?(Y/N)");
+                    String reponse = scannerMusique.nextLine();
+                        if (reponse.equals("Y")) {
+                            playlist.afficherPlaylist();
+                            ajoutMusique = true;
+                        }
+                        }
                     break;
                 case 4:
                     System.out.println("nom playlist");
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
