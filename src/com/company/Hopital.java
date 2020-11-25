@@ -10,6 +10,7 @@ public class Hopital {
     private String special;
     private int taille;
     public static List<Hopital> listeHopitaux = new ArrayList<>();
+    public static int actuelHopital = 0;
 
     public Hopital(String name, String adress, String special, int taille) {
         this.name = name;
@@ -35,6 +36,21 @@ public class Hopital {
             Hopital hopital = new Hopital(name, adress, spec, taille);
             listeHopitaux.add(hopital);
         }
+    }
+
+    public static void changeHospital(){
+        int nombreHopitaux = listeHopitaux.size();
+        System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponibles :");
+        int a = 1;
+        for (int i = 0; i < nombreHopitaux; i++) {
+            System.out.println(a + " : " + listeHopitaux.get(i).getName());
+            a++;
+        }
+        System.out.println("Choisissez l'hôpital :");
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        System.out.println("Vous avez choisis " + listeHopitaux.get(input-1).getName());
+        actuelHopital = input-1;
     }
 
     public String getName() {
