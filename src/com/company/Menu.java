@@ -28,11 +28,15 @@ public class Menu {
                     System.out.println("Choisissez votre option :");
                     if (Hopital.listeHopitaux.isEmpty()) {
                         System.out.println("1 : Ajouter Hopital");
-                        input = scanner.nextInt();
-                        switch (input) {
-                            case 1:
-                                Hopital.addHopital();
-                                break;
+                        try{
+                            input = scanner.nextInt();
+                            switch (input) {
+                                case 1:
+                                    Hopital.addHopital();
+                                    break;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Veuillez indiquer une option valide");;
                         }
                         menu();
                     }
@@ -41,90 +45,95 @@ public class Menu {
                     System.out.println("3 : Gestion Praticien");
                     System.out.println("4 : Gestion Médicament");
                     input = scanner.nextInt();
-                    switch (input) {
-                        case 1:
-                            System.out.println("Choisissez votre option : \n");
-                            System.out.println("1 : Changer Hopital");
-                            System.out.println("2 : Ajouter Hopital");
-                            input = scanner.nextInt();
-                            switch (input) {
-                                case 1:
-                                    Hopital.changeHospital();
-                                    break;
-                                case 2:
-                                    Hopital.addHopital();
-                                    break;
-                            }
-                            break;
-                        case 2:
-                            System.out.println("Choisissez votre option : ");
-                            System.out.println("1 : Ajout d'un Patient");
-                            System.out.println("2 : Retirer un Patient");
-                            System.out.println("3 : Afficher les Patients");
-                            System.out.println("4 : Gestion Rendez-vous");
-                            input = scanner.nextInt();
-                            switch (input) {
-                                case 1:
-                                    Patient.addPatient();
-                                    break;
-                                case 2:
-                                    Patient.retirerPatient();
-                                    break;
-                                case 3:
-                                    Patient.showPatient();
-                                    break;
-                                case 4:
-                                    System.out.println("\nChoisissez votre option : ");
-                                    System.out.println("1 : Ajout d'un Rendez-Vous");
-                                    System.out.println("2 : Voir les Rendez-Vous");
-                                    try{
-                                        input = scanner.nextInt();
-                                        switch (input){
-                                            case 1:
-                                                Hopital.createRendezVous();
-                                                break;
-                                            case 2:
-                                                System.out.println(Semaine.Jours);
-                                                break;
-                                    }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                    break;
-                            }
-                            menu();
-                            break;
-                        case 3:
-                            System.out.println("Choisissez votre option : ");
-                            System.out.println("1 : Ajout d'un Praticien");
-                            System.out.println("2 : Retirer un Praticien");
-                            System.out.println("3 : Afficher les Praticiens");
-                            input = scanner.nextInt();
-                            switch (input) {
-                                case 1:
-                                    Praticien.addPraticien();
-                                    break;
-                                case 2:
-                                    Praticien.retirerPraticien();
-                                    break;
-                                case 3:
-                                    Praticien.showPraticien();
-                                    break;
-                            }
-                        case 4:
-                            System.out.println("Choisissez votre option : ");
-                            System.out.println("1 : Ajout de Médicaments");
-                            System.out.println("2 : Afficher les Médicaments");
-                            input = scanner.nextInt();
-                            switch (input) {
-                                case 1:
-                                    Medicament.addMedicament();
-                                    break;
-                                case 2:
-                                    Medicament.showMedicament();
-                            }
+                    try {
+                        switch (input) {
+                            case 1:
+                                System.out.println("Choisissez votre option : \n");
+                                System.out.println("1 : Changer Hopital");
+                                System.out.println("2 : Ajouter Hopital");
+                                input = scanner.nextInt();
+                                switch (input) {
+                                    case 1:
+                                        Hopital.changeHospital();
+                                        break;
+                                    case 2:
+                                        Hopital.addHopital();
+                                        break;
+                                }
+                                break;
+                            case 2:
+                                System.out.println("Choisissez votre option : ");
+                                System.out.println("1 : Ajout d'un Patient");
+                                System.out.println("2 : Retirer un Patient");
+                                System.out.println("3 : Afficher les Patients");
+                                System.out.println("4 : Gestion Rendez-vous");
+                                input = scanner.nextInt();
+                                switch (input) {
+                                    case 1:
+                                        Patient.addPatient();
+                                        break;
+                                    case 2:
+                                        Patient.retirerPatient();
+                                        break;
+                                    case 3:
+                                        Patient.showPatient();
+                                        break;
+                                    case 4:
+                                        System.out.println("\nChoisissez votre option : ");
+                                        System.out.println("1 : Ajout d'un Rendez-Vous");
+                                        System.out.println("2 : Voir les Rendez-Vous");
+                                        try {
+                                            input = scanner.nextInt();
+                                            switch (input) {
+                                                case 1:
+                                                    Hopital.createRendezVous();
+                                                    break;
+                                                case 2:
+                                                    System.out.println(Semaine.Jours);
+                                                    break;
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        break;
+                                }
+                                menu();
+                                break;
+                            case 3:
+                                System.out.println("Choisissez votre option : ");
+                                System.out.println("1 : Ajout d'un Praticien");
+                                System.out.println("2 : Retirer un Praticien");
+                                System.out.println("3 : Afficher les Praticiens");
+                                input = scanner.nextInt();
+                                switch (input) {
+                                    case 1:
+                                        Praticien.addPraticien();
+                                        break;
+                                    case 2:
+                                        Praticien.retirerPraticien();
+                                        break;
+                                    case 3:
+                                        Praticien.showPraticien();
+                                        break;
+                                }
+                            case 4:
+                                System.out.println("Choisissez votre option : ");
+                                System.out.println("1 : Ajout de Médicaments");
+                                System.out.println("2 : Afficher les Médicaments");
+                                input = scanner.nextInt();
+                                switch (input) {
+                                    case 1:
+                                        Medicament.addMedicament();
+                                        break;
+                                    case 2:
+                                        Medicament.showMedicament();
+                                }
+                        }
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("ERREUR");
+                        menu();
                     }
-                    break;
                 case 2:
                     System.out.println("\n1 : Laspitau Music");
                     System.out.println("2 : Mini-jeu");
