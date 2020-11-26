@@ -149,12 +149,21 @@ public class Menu {
                         case 2:
                             System.out.println("Le jeu va bientôt commencer, êtes-vous pret ? (Y/N)");
                             String reponse = scanner.next();
-                            if (reponse.equals("Y")) {
-                                MenuLieu.menuLieu();
-                            }else if (reponse.equals("N"));
-                            Menu.menu();
-                            break;
-
+                            try {
+                                if (reponse.equals("Y")) {
+                                    MenuLieu.menuLieu();
+                                    break;
+                                } else if (reponse.equals("N")) {
+                                    menu();
+                                }
+                                else {
+                                    System.out.println("Erreur, veuillez indiquer un caractère valide\n");
+                                    menu();
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Erreur, veuillez indiquer un caractère valide\n");
+                            }
+                            menu();
 
                     }
             }
