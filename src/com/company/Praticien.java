@@ -14,6 +14,16 @@ public class Praticien {
     private int price;
     public static List<Praticien> listePraticien = new ArrayList<>();
 
+    /***
+     * Constructeur Du Praticien
+     * @param matriculNumber Le numéro du matricule
+     * @param lastName Le nom
+     * @param name Le Prénom
+     * @param special La specialité de ce Praticien
+     * @param grade Son grade
+     * @param whichHospital L'Hôpital auquel il est affecté
+     * @param price Le tarif honoraire
+     */
     public Praticien(String matriculNumber, String lastName, String name, String special, String grade, int whichHospital, int price) {
         this.matriculNumber = matriculNumber;
         this.LastName = lastName;

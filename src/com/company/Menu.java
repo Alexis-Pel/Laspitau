@@ -55,7 +55,7 @@ public class Menu {
                             System.out.println("2 : Retirer un Patient");
                             System.out.println("3 : Afficher les Patients");
                             input = scanner.nextInt();
-                            switch (input){
+                            switch (input) {
                                 case 1:
                                     Patient.addPatient();
                                     break;
@@ -67,6 +67,23 @@ public class Menu {
                                     break;
                             }
                             break;
+                        case 3:
+                            System.out.println("Choisissez votre option : ");
+                            System.out.println("1 : Ajout d'un Praticien");
+                            System.out.println("2 : Retirer un Praticien");
+                            System.out.println("3 : Afficher les Praticiens");
+                            input = scanner.nextInt();
+                            switch (input) {
+                                case 1:
+                                    Praticien.addPraticien();
+                                    break;
+                                case 2:
+                                    Praticien.retirerPraticien();
+                                    break;
+                                case 3:
+                                    Praticien.showPraticien();
+                                    break;
+                            }
                     }
                     break;
                 case 2:
