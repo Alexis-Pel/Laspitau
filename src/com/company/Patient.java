@@ -14,6 +14,15 @@ public class Patient {
     private int whichHospital;
     public static List<Patient> listePatients = new ArrayList<>();
 
+    /***
+     * Constructeur du Patient
+     * @param numSecu Le numéro de Sécurité Sociale
+     * @param name Le prénom du Patient
+     * @param lastName Le nom du patient
+     * @param adress L'adresse du patient
+     * @param phoneNumber Le numéro de téléphone du patient
+     * @param email L'email du patient
+     */
     public Patient(String numSecu, String name, String lastName, String adress, String phoneNumber, String email){
         this.numSecu = numSecu;
         this.name = name;
@@ -24,6 +33,9 @@ public class Patient {
         this.whichHospital = Hopital.actuelHopital;
     }
 
+    /***
+     * Permet D'ajouter un patient
+     */
     public static void addPatient(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Numéro de Sécurité Sociale :");
@@ -52,6 +64,9 @@ public class Patient {
         }
     }
 
+    /***
+     * Permet de retirer un patient
+     */
     public static void retirerPatient(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez entrer le numéro de Sécurité Sociale du patient à retirer :");
@@ -68,6 +83,9 @@ public class Patient {
         }
     }
 
+    /***
+     * Affiche les Patients
+     */
     public static void showPatient(){
         if(listePatients.isEmpty()){
             System.out.println("Veuillez ajouter des patients\n");

@@ -6,7 +6,10 @@ public class Semaine {
     public static List Jours = new LinkedList<>();
     public static List Horaire = new LinkedList<>();
 
-
+    /***
+     * Permet de créer les jours de travail
+     * @return Les jours contenant les horaires
+     */
     public static List createDays(){
         for (int i = 0; i < 2; i++) {
             Horaire.clear();

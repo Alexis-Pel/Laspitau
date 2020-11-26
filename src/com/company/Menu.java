@@ -1,10 +1,15 @@
 package com.company;
 
+import com.company.jeu.MenuLieu;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+    /***
+     * Le menu de navigation
+     */
     public static void menu(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("---- Bienvenue dans le logiciel du groupe Laspitau ----\n");
@@ -103,8 +108,8 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    System.out.println("\n 1 : Ajouter musique");
-                    System.out.println("2 : Voir Playlist");
+                    System.out.println("\n1 : Ajouter musique");
+                    System.out.println("2 : Mini-jeu");
                     input = scanner.nextInt();
                     switch (input){
                         case 1 :
@@ -118,19 +123,26 @@ public class Menu {
                                 String nomMusique = scannerMusique.nextLine();
                                 Musique musique1 = new Musique(nomMusique, nomArtiste);
                                 listeMusique.add(musique1);
-                                Playlist playlist = new Playlist(nomArtiste + "--->",listeMusique);
-                                playlist.afficherPlaylist();
+                                //Playlist playlist = new Playlist(nomArtiste + "--->",listeMusique);
+                                //playlist.afficherPlaylist();
                                 System.out.println("Voulez-vous quitter ?(Y/N)");
                                 String reponse = scannerMusique.nextLine();
                                 if (reponse.equals("Y")) {
-                                    playlist.afficherPlaylist();
+                                //    playlist.afficherPlaylist();
                                     ajoutMusique = true;
                                 }
                             }
                             break;
                         case 2:
-                            System.out.println("nom playlist");
+                            System.out.println("Le jeu va bientôt commencer, êtes-vous pret ? (Y/N)");
+                            String reponse = scanner.next();
+                            if (reponse.equals("Y")) {
+                                MenuLieu.menuLieu();
+                            }else if (reponse.equals("N"));
+                            Menu.menu();
                             break;
+
+
                     }
             }
         } catch (Exception e) {
