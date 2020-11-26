@@ -115,4 +115,5 @@ public class Praticien {
     public int getPrice() {
         return price;
     }
+    public int getWhichHospital(){return whichHospital;}
 }
