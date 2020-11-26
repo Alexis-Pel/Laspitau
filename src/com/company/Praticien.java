@@ -33,6 +33,10 @@ public class Praticien {
         this.whichHospital = whichHospital;
         this.price = price;
     }
+
+    /***
+     * Permet d'ajouter un Praticien
+     */
     public static void addPraticien() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Numéro de Matricule :");
@@ -60,6 +64,10 @@ public class Praticien {
                 break;
         }
     }
+
+    /***
+     * Permet de retirer un praticien
+     */
     public static void retirerPraticien(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez entrer le numéro de Matricule du praticien à retirer :");
@@ -76,6 +84,9 @@ public class Praticien {
         }
     }
 
+    /***
+     * Affiche les praticiens
+     */
     public static void showPraticien(){
         if(listePraticien.isEmpty()){
             System.out.println("Veuillez ajouter des praticiens\n");
@@ -99,18 +110,6 @@ public class Praticien {
 
     public String getName() {
         return name;
-    }
-
-    public String getSpecial() {
-        return special;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public int getWhichHospital() {
-        return whichHospital;
     }
 
     public int getPrice() {

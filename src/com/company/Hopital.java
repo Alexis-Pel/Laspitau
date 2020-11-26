@@ -11,6 +11,13 @@ public class Hopital {
     public static List<Hopital> listeHopitaux = new ArrayList<>();
     public static int actuelHopital = 0;
 
+    /***
+     * Constructeur d'un Hopital
+     * @param name Le nom de l'hopital
+     * @param adress L'adresse de l'hopital
+     * @param special La spécialité de l'Hopital
+     * @param taille la contenance de l'Hopital
+     */
     public Hopital(String name, String adress, String special, int taille) {
         this.name = name;
         this.adress = adress;
@@ -18,6 +25,9 @@ public class Hopital {
         this.taille = taille;
     }
 
+    /***
+     * Permet d'ajouter un Hopital
+     */
     public static void addHopital(){
         System.out.println("Ajouter combien d'hôpitaux ?");
         Scanner scanner = new Scanner(System.in);
@@ -37,6 +47,9 @@ public class Hopital {
         }
     }
 
+    /***
+     * Permet de changer l'hôpital séléctionné
+     */
     public static void changeHospital(){
         int nombreHopitaux = listeHopitaux.size();
         System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponible(s) :");
@@ -52,6 +65,9 @@ public class Hopital {
         actuelHopital = input-1;
     }
 
+    /***
+     * Permet de créer un rendez-vous
+     */
     public static void createRendezVous(){
         System.out.println("Liste des praticiens disponibles\n");
         Praticien.showPraticien();

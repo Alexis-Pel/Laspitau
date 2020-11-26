@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+    /***
+     * Le menu de navigation
+     */
     public static void menu(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("---- Bienvenue dans le logiciel du groupe Laspitau ----\n");
@@ -105,7 +108,7 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    System.out.println("\n 1 : Ajouter musique");
+                    System.out.println("\n1 : Ajouter musique");
                     System.out.println("2 : Mini-jeu");
                     input = scanner.nextInt();
                     switch (input){
