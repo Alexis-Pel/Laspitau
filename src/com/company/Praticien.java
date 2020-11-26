@@ -41,7 +41,7 @@ public class Praticien {
         String lastName = scanner.nextLine();
         System.out.println("Prénom :");
         String name = scanner.nextLine();
-        System.out.println("Spécialitée : ");
+        System.out.println("Spécialité : ");
         String spec = scanner.nextLine();
         System.out.println("Grade :");
         String grade = scanner.nextLine();
