@@ -67,13 +67,18 @@ public class Musique {
     }
 
     public static void changerPlusMusique(){
-        actualMusic += 1;
-        showActualMusique();
+            actualMusic += 1;
+            showActualMusique();
    }
 
    public static void changerMoinsMusique(){
-        actualMusic -= 1;
-        showActualMusique();
+        if (actualMusic <= 0){
+            System.out.println("Impossible pas d'autre chanson apres");
+        }
+        else {
+            actualMusic -= 1;
+            showActualMusique();
+        }
    }
     public static void showActualMusique(){
         System.out.println(listeMusique.get(actualMusic).getNomMusique());
