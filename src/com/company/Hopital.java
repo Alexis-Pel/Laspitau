@@ -19,7 +19,7 @@ public class Hopital {
     }
 
     public static void addHopital(){
-        System.out.println("Ajouter combiens d'Hôpitaux ?");
+        System.out.println("Ajouter combien d'hôpitaux ?");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
         for (int i = 0; i < input; i++) {
@@ -28,7 +28,7 @@ public class Hopital {
             String name = scanner1.nextLine();
             System.out.println("Adresse de l'hôpital : ");
             String adress = scanner1.nextLine();
-            System.out.println("Specialitée de l'Hôpital ( '' )( '' )( '' ) : ");
+            System.out.println("Specialité de l'hôpital ( '' )( '' )( '' ) : ");
             String spec = scanner1.nextLine();
             System.out.println("Taille de l'hôpital : ");
             int taille = scanner1.nextInt();
@@ -39,7 +39,7 @@ public class Hopital {
 
     public static void changeHospital(){
         int nombreHopitaux = listeHopitaux.size();
-        System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponibles :");
+        System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponible(s) :");
         int a = 1;
         for (int i = 0; i < nombreHopitaux; i++) {
             System.out.println(a + " : " + listeHopitaux.get(i).getName());
@@ -48,7 +48,7 @@ public class Hopital {
         System.out.println("Choisissez l'hôpital :");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
-        System.out.println("Vous avez choisis " + listeHopitaux.get(input-1).getName());
+        System.out.println("Vous avez choisi " + listeHopitaux.get(input-1).getName());
         actuelHopital = input-1;
     }
 
