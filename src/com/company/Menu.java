@@ -77,14 +77,18 @@ public class Menu {
                                     System.out.println("\nChoisissez votre option : ");
                                     System.out.println("1 : Ajout d'un Rendez-Vous");
                                     System.out.println("2 : Voir les Rendez-Vous");
-                                    input = scanner.nextInt();
-                                    switch (input) {
-                                        case 1:
-                                            Hopital.createRendezVous();
-                                            break;
-                                        case 2:
-                                            System.out.println(Semaine.Jours);
-                                            break;
+                                    try{
+                                        input = scanner.nextInt();
+                                        switch (input){
+                                            case 1:
+                                                Hopital.createRendezVous();
+                                                break;
+                                            case 2:
+                                                System.out.println(Semaine.Jours);
+                                                break;
+                                    }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
                                     break;
                             }
@@ -122,8 +126,8 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    System.out.println("\n 1 : Laspitau Music");
-                    System.out.println("2 : Voir Playlist");
+                    System.out.println("\n1 : Laspitau Music");
+                    System.out.println("2 : Mini-jeu");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1:
@@ -133,7 +137,7 @@ public class Menu {
                             }
                             System.out.println("Choisissez votre option :");
                             if (Playlist.listePlaylists.isEmpty()) {
-                                System.out.println("1 : Ajouter Playlsit");
+                                System.out.println("1 : Ajouter Playlist");
                                 input = scanner.nextInt();
                                 switch (input) {
                                     case 1:
@@ -188,7 +192,8 @@ public class Menu {
                                     break;
                                 } else if (reponse.equals("N")) {
                                     menu();
-                                } else {
+                                }
+                                else {
                                     System.out.println("Erreur, veuillez indiquer un caractère valide\n");
                                     menu();
                                 }

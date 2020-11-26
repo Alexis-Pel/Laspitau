@@ -70,9 +70,19 @@ public class Hopital {
      */
     public static void createRendezVous(){
         System.out.println("Liste des praticiens disponibles\n");
-        Praticien.showPraticien();
+        for (int i = 0; i < Praticien.listePraticien.size(); i++) {
+            int hospital = Praticien.listePraticien.get(i).getWhichHospital();
+            if (hospital == actuelHopital){
+                System.out.println(Praticien.listePraticien.get(i).getName() + Praticien.listePraticien.get(i).getLastName() + " --> " + Praticien.listePraticien.get(i).getMatriculNumber());
+            }
+        }
         System.out.println("Liste des Patients disponibles\n");
-        Patient.showPatient();
+        for (int i = 0; i < Patient.listePatients.size(); i++) {
+            int hospital = Patient.listePatients.get(i).getWhichHospital();
+            if (hospital == actuelHopital){
+                System.out.println(Patient.listePatients.get(i).getName() + Patient.listePatients.get(i).getLastName() + " --> " + Patient.listePatients.get(i).getNumSecu());
+            }
+        }
         System.out.println("\nChoisissez le jour du rendez vous :");
         int nombreJours = Semaine.Jours.size();
         for (int i = 0; i < nombreJours; i++) {

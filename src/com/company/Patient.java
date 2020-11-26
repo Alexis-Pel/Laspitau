@@ -122,4 +122,8 @@ public class Patient {
     public String getEmail() {
         return email;
     }
+
+    public int getWhichHospital() {
+        return whichHospital;
+    }
 }

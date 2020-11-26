@@ -61,7 +61,7 @@ public class Musique {
         for (int i = 0; i < listeMusique.size(); i++) {
             int playlist = listeMusique.get(i).whichPlayliste;
             if(playlist== Playlist.actualPlaylist){
-                System.out.println(listeMusique.get(i).getNomMusique() + "DE" + listeMusique.get(i).getNomArtiste());
+                System.out.println(listeMusique.get(i).getNomMusique() + " DE " + listeMusique.get(i).getNomArtiste());
             }
         }
     }
