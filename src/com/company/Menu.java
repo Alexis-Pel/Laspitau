@@ -1,10 +1,5 @@
 package com.company;
-
 import com.company.jeu.MenuLieu;
-
-import java.lang.management.PlatformLoggingMXBean;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -44,8 +39,8 @@ public class Menu {
                     System.out.println("2 : Gestion Patient");
                     System.out.println("3 : Gestion Praticien");
                     System.out.println("4 : Gestion Médicament");
-                    input = scanner.nextInt();
                     try {
+                    input = scanner.nextInt();
                         switch (input) {
                             case 1:
                                 System.out.println("Choisissez votre option : \n");
