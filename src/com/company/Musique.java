@@ -1,8 +1,7 @@
 package com.company;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.*;
 
 public class Musique {
 
@@ -10,6 +9,7 @@ public class Musique {
     private String nomArtiste;
     private int whichPlayliste;
     public static List<Musique> listeMusique = new ArrayList<>();
+    public static int actualMusic = 0;
 
     public Musique(String nomMusique, String nomArtiste) {
         this.nomMusique = nomMusique;
@@ -61,10 +61,24 @@ public class Musique {
         for (int i = 0; i < listeMusique.size(); i++) {
             int playlist = listeMusique.get(i).whichPlayliste;
             if(playlist== Playlist.actualPlaylist){
-                System.out.println(listeMusique.get(i).getNomMusique() + "DE" + listeMusique.get(i).getNomArtiste());
+                System.out.println(listeMusique.get(i).getNomMusique() + " DE " + listeMusique.get(i).getNomArtiste());
             }
         }
     }
+
+    public static void changerPlusMusique(){
+        actualMusic += 1;
+        showActualMusique();
+   }
+
+   public static void changerMoinsMusique(){
+        actualMusic -= 1;
+        showActualMusique();
+   }
+    public static void showActualMusique(){
+        System.out.println(listeMusique.get(actualMusic).getNomMusique());
+    }
+
 
 
     public String getNomMusique() {

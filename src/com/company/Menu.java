@@ -2,10 +2,11 @@ package com.company;
 
 import com.company.jeu.MenuLieu;
 
-import java.lang.management.PlatformLoggingMXBean;
-import java.util.LinkedList;
-import java.util.List;
+import java.lang.management.MemoryUsage;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
+
 
 public class Menu {
     /***
@@ -122,8 +123,8 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    System.out.println("\n 1 : Laspitau Music");
-                    System.out.println("2 : Voir Playlist");
+                    System.out.println("\n1 : Laspitau Music");
+                    System.out.println("2 : Mini-jeu");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1:
@@ -137,7 +138,7 @@ public class Menu {
                                 input = scanner.nextInt();
                                 switch (input) {
                                     case 1:
-                                        Playlist.addPlaylsit();
+                                        Playlist.addPlaylist();
                                         break;
                                 }
                                 menu();
@@ -156,7 +157,7 @@ public class Menu {
                                             Playlist.changePlaylist();
                                             break;
                                         case 2:
-                                            Playlist.addPlaylsit();
+                                            Playlist.addPlaylist();
                                             break;
                                     }
                                     break;
@@ -165,6 +166,7 @@ public class Menu {
                                     System.out.println("1 : Ajout d'une Musique");
                                     System.out.println("2 : Retirer une Musique");
                                     System.out.println("3 : Afficher les Musiques");
+                                    System.out.println("' : Lire une Musique");
                                     input = scanner.nextInt();
                                     switch (input) {
                                         case 1:
@@ -176,6 +178,46 @@ public class Menu {
                                         case 3:
                                             Musique.showMusique();
                                             break;
+                                        case 4:
+                                            System.out.println("1 : Lire les Musiques de la Playlist en aléatoire");
+                                            System.out.println("2 : Lire les Musiques de la Playlist dans l'ordre");
+                                            input = scanner.nextInt();
+                                            switch (input) {
+                                                case 1:
+                                                    Collections.shuffle(Musique.listeMusique);
+                                                    Musique.showActualMusique();
+                                                    boolean ecoute = false;
+                                                    while (ecoute == false) {
+                                                        System.out.println("1 : changer de musique aléatoirement");
+                                                        System.out.println("2 : arreter la musique");
+                                                        input = scanner.nextInt();
+                                                        if (input == 1) {
+                                                            Collections.shuffle(Musique.listeMusique);
+                                                            Musique.showActualMusique();
+                                                        } else if (input == 2) {
+                                                            ecoute = true;
+                                                            menu();
+                                                        }
+                                                    }
+                                                case 2:
+                                                    Musique.showActualMusique();
+                                                    ecoute = false;
+                                                    while (ecoute == false) {
+                                                        System.out.println("1 : revenir au morceau précédent");
+                                                        System.out.println("2 : passer au morceau suivant");
+                                                        System.out.println("3 : arreter la musique");
+                                                        input = scanner.nextInt();
+                                                        if (input == 1) {
+                                                            Musique.changerMoinsMusique();
+                                                        } else if (input == 2) {
+                                                            Musique.changerPlusMusique();
+                                                        } else if (input == 3) {
+                                                            ecoute = true;
+                                                            menu();
+                                                        }
+
+                                                    }
+                                            }
                                     }
                             }
                             break;
