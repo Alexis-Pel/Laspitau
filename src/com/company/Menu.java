@@ -38,6 +38,7 @@ public class Menu {
                     System.out.println("1 : Gestion Hôpital");
                     System.out.println("2 : Gestion Patient");
                     System.out.println("3 : Gestion Praticien");
+                    System.out.println("4 : Gestion Médicament");
                     input = scanner.nextInt();
                     switch (input) {
                         case 1:
@@ -104,6 +105,18 @@ public class Menu {
                                 case 3:
                                     Praticien.showPraticien();
                                     break;
+                            }
+                        case 4:
+                            System.out.println("Choisissez votre option : ");
+                            System.out.println("1 : Ajout de Médicaments");
+                            System.out.println("2 : Afficher les Médicaments");
+                            input = scanner.nextInt();
+                            switch (input) {
+                                case 1:
+                                    Medicament.addMedicament();
+                                    break;
+                                case 2:
+                                    Medicament.showMedicament();
                             }
                     }
                     break;

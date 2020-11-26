@@ -9,10 +9,10 @@ public class Medicament {
     private String description;
     private int quantityAvailable;
     private String dateOfPrescription;
-    private int price;
+    private String price;
     public static List<Medicament> listeMedicament = new ArrayList<>();
 
-    public Medicament(String ISNCode, String nomenclature, String description, int quantityAvailable, String dateOfPrescription, int price) {
+    public Medicament(String ISNCode, String nomenclature, String description, int quantityAvailable, String dateOfPrescription, String price) {
         this.ISNCode = ISNCode;
         this.nomenclature = nomenclature;
         this.description = description;
@@ -36,11 +36,32 @@ public class Medicament {
             System.out.println("Quantité disponible");
             int quantityAvailable = scanner1.nextInt();
             System.out.println("Date de la prescription");
-            String dateOfPrescrpition = scanner1.nextLine();
+            String dateOfPrescrpition = scanner1.next();
             System.out.println("Prix du médicament");
-            int price = scanner1.nextInt();
+            String price = scanner1.next();
             Medicament medicament = new Medicament(ISNCode,nomenclature,description,quantityAvailable,dateOfPrescrpition,price);
             listeMedicament.add(medicament);
         }
+    }
+
+    public static void showMedicament(){
+        if(listeMedicament.isEmpty()){
+            System.out.println("Veuillez ajouter des médicaments.\n");
+            Menu.menu();
+        }
+        for (int i = 0; i < listeMedicament.size(); i++){
+            System.out.println(listeMedicament.get(i).getISNCode() + " " + listeMedicament.get(i).getNomenclature() + " " + listeMedicament.get(i).getDateOfPrescription());
+
+        }
+    }
+
+    public String getISNCode(){
+        return ISNCode;
+    }
+    public String getNomenclature(){
+        return nomenclature;
+    }
+    public String getDateOfPrescription(){
+        return dateOfPrescription;
     }
 }
