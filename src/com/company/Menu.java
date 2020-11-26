@@ -176,59 +176,76 @@ public class Menu {
                                     System.out.println("2 : Retirer une Musique");
                                     System.out.println("3 : Afficher les Musiques");
                                     System.out.println("4 : Lire une Musique");
-                                    input = scanner.nextInt();
-                                    switch (input) {
-                                        case 1:
-                                            Musique.addMusique();
-                                            break;
-                                        case 2:
-                                            Musique.retirerMusique();
-                                            break;
-                                        case 3:
-                                            Musique.showMusique();
-                                            break;
-                                        case 4:
-                                            System.out.println("1 : Lire les Musiques de la Playlist en aléatoire");
-                                            System.out.println("2 : Lire les Musiques de la Playlist dans l'ordre");
-                                            input = scanner.nextInt();
-                                            switch (input) {
-                                                case 1:
-                                                    Collections.shuffle(Musique.listeMusique);
-                                                    Musique.showActualMusique();
-                                                    boolean ecoute = false;
-                                                    while (ecoute == false) {
-                                                        System.out.println("1 : changer de musique aléatoirement");
-                                                        System.out.println("2 : arreter la musique");
-                                                        input = scanner.nextInt();
-                                                        if (input == 1) {
+                                    try{
+                                        input = scanner.nextInt();
+                                        switch (input) {
+                                            case 1:
+                                                Musique.addMusique();
+                                                break;
+                                            case 2:
+                                                Musique.retirerMusique();
+                                                break;
+                                            case 3:
+                                                Musique.showMusique();
+                                                break;
+                                            case 4:
+                                                System.out.println("1 : Lire les Musiques de la Playlist en aléatoire");
+                                                System.out.println("2 : Lire les Musiques de la Playlist dans l'ordre");
+                                                try{
+                                                    input = scanner.nextInt();
+                                                    switch (input) {
+                                                        case 1:
                                                             Collections.shuffle(Musique.listeMusique);
                                                             Musique.showActualMusique();
-                                                        } else if (input == 2) {
-                                                            ecoute = true;
-                                                            menu();
-                                                        }
+                                                            boolean ecoute = false;
+                                                            while (ecoute == false) {
+                                                                System.out.println("1 : changer de musique aléatoirement");
+                                                                System.out.println("2 : arreter la musique");
+                                                                input = scanner.nextInt();
+                                                                if (input == 1) {
+                                                                    Collections.shuffle(Musique.listeMusique);
+                                                                    Musique.showActualMusique();
+                                                                } else if (input == 2) {
+                                                                    ecoute = true;
+                                                                    menu();
+                                                                }
+                                                                else{
+                                                                    System.out.println("ERREUR");
+                                                                    menu();
+                                                                }
+                                                            }
+                                                        case 2:
+                                                            Musique.showActualMusique();
+                                                            ecoute = false;
+                                                            while (ecoute == false) {
+                                                                System.out.println("1 : revenir au morceau précédent");
+                                                                System.out.println("2 : passer au morceau suivant");
+                                                                System.out.println("3 : arreter la musique");
+                                                                input = scanner.nextInt();
+                                                                if (input == 1) {
+                                                                    Musique.changerMoinsMusique();
+                                                                } else if (input == 2) {
+                                                                    Musique.changerPlusMusique();
+                                                                } else if (input == 3) {
+                                                                    ecoute = true;
+                                                                    menu();
+                                                                }
+                                                                else{
+                                                                    System.out.println("ERREUR, retour au menu");
+                                                                }
+                                                            }
                                                     }
-                                                case 2:
-                                                    Musique.showActualMusique();
-                                                    ecoute = false;
-                                                    while (ecoute == false) {
-                                                        System.out.println("1 : revenir au morceau précédent");
-                                                        System.out.println("2 : passer au morceau suivant");
-                                                        System.out.println("3 : arreter la musique");
-                                                        input = scanner.nextInt();
-                                                        if (input == 1) {
-                                                            Musique.changerMoinsMusique();
-                                                        } else if (input == 2) {
-                                                            Musique.changerPlusMusique();
-                                                        } else if (input == 3) {
-                                                            ecoute = true;
-                                                            menu();
-                                                        }
-
-                                                    }
-                                            }
+                                                } catch (Exception e) {
+                                                    System.out.println("Erreur, retour au menu..");
+                                                    menu();
+                                                }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Erreur, retour au menu..");
+                                        menu();
                                     }
                             }
+
                             break;
                         case 2:
                             System.out.println("Le jeu va bientôt commencer, êtes-vous pret ? (Y/N)");
