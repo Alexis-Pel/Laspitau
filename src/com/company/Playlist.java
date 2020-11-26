@@ -1,32 +1,50 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Playlist {
     private String nomPlaylist;
-    private List<Musique> listeMusique = new LinkedList<>();
+    public static List<Playlist> listePlaylists = new ArrayList<>();
+    public static int actualPlaylist = 0;
 
-    public Playlist(String nomPlaylist, List<Musique> listeMusique) {
+
+    public Playlist(String nomPlaylist) {
         this.nomPlaylist = nomPlaylist;
-        this.listeMusique = listeMusique;
+    }
+
+
+    public static void addPlaylsit() {
+        System.out.println("Ajouter combiens d'Hôpitaux ?");
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        for (int i = 0; i < input; i++) {
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("Nom de la playlist:");
+            String namePlaylist = scanner1.nextLine();
+            Playlist playlist = new Playlist(namePlaylist);
+            listePlaylists.add(playlist);
+        }
+    }
+
+    public static void changePlaylist(){
+        int nombrePlaylist = listePlaylists.size();
+        System.out.println("Il y a " + nombrePlaylist + " Hopital(aux) disponibles :");
+        int a = 1;
+        for (int i = 0; i < nombrePlaylist; i++) {
+            System.out.println(a + " : " + listePlaylists.get(i).getNomPlaylist());
+            a++;
+        }
+        System.out.println("Choisissez l'hôpital :");
+        Scanner scanner1 = new Scanner(System.in);
+        int input1 = scanner1.nextInt();
+        System.out.println("Vous avez choisis " + listePlaylists.get(input1 - 1).getNomPlaylist());
+        actualPlaylist = input1 - 1;
     }
 
     public String getNomPlaylist() {
         return nomPlaylist;
-    }
-
-    public List<Musique> getListeMusique() {
-        return listeMusique;
-    }
-
-    public void afficherPlaylist(){
-        for (Musique musique:this.listeMusique){
-            System.out.println(musique.getNomArtiste() + " " + musique.getNomMusique());
-        }
-    }
-
-    public void ajouterMusique(Musique musique){
-        this.listeMusique.add(musique);
     }
 }
