@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.jeu.MenuLieu;
 
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Menu {
     /***
      * Le menu de navigation
      */
-    public static void menu(){
+    public static void menu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("---- Bienvenue dans le logiciel du groupe Laspitau ----\n");
         System.out.println("Choisissez votre option :");
@@ -21,11 +22,11 @@ public class Menu {
             switch (input) {
                 case 1:
                     System.out.println("\n -- Administration du groupe -- \n");
-                    if (!Hopital.listeHopitaux.isEmpty()){
+                    if (!Hopital.listeHopitaux.isEmpty()) {
                         System.out.println(" - Hôpital " + Hopital.listeHopitaux.get(Hopital.actuelHopital).getName() + " -");
                     }
                     System.out.println("Choisissez votre option :");
-                    if(Hopital.listeHopitaux.isEmpty()) {
+                    if (Hopital.listeHopitaux.isEmpty()) {
                         System.out.println("1 : Ajouter Hopital");
                         input = scanner.nextInt();
                         switch (input) {
@@ -77,7 +78,7 @@ public class Menu {
                                     System.out.println("1 : Ajout d'un Rendez-Vous");
                                     System.out.println("2 : Voir les Rendez-Vous");
                                     input = scanner.nextInt();
-                                    switch (input){
+                                    switch (input) {
                                         case 1:
                                             Hopital.createRendezVous();
                                             break;
@@ -121,29 +122,61 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    System.out.println("\n1 : Ajouter musique");
-                    System.out.println("2 : Mini-jeu");
+                    System.out.println("\n 1 : Laspitau Music");
+                    System.out.println("2 : Voir Playlist");
                     input = scanner.nextInt();
-                    switch (input){
-                        case 1 :
-                            boolean ajoutMusique = false;
-                            while (ajoutMusique == false){
-                                List<Musique> listeMusique = new LinkedList<>();
-                                Scanner scannerMusique = new Scanner(System.in);
-                                System.out.println("nom artiste");
-                                String nomArtiste = scannerMusique.nextLine();
-                                System.out.println("nom musique");
-                                String nomMusique = scannerMusique.nextLine();
-                                Musique musique1 = new Musique(nomMusique, nomArtiste);
-                                listeMusique.add(musique1);
-                                //Playlist playlist = new Playlist(nomArtiste + "--->",listeMusique);
-                                //playlist.afficherPlaylist();
-                                System.out.println("Voulez-vous quitter ?(Y/N)");
-                                String reponse = scannerMusique.nextLine();
-                                if (reponse.equals("Y")) {
-                                //    playlist.afficherPlaylist();
-                                    ajoutMusique = true;
+                    switch (input) {
+                        case 1:
+                            System.out.println("\n -- Laspitau Music -- \n");
+                            if (!Playlist.listePlaylists.isEmpty()) {
+                                System.out.println(" - Playlist " + Playlist.listePlaylists.get(Playlist.actualPlaylist).getNomPlaylist() + " -");
+                            }
+                            System.out.println("Choisissez votre option :");
+                            if (Playlist.listePlaylists.isEmpty()) {
+                                System.out.println("1 : Ajouter Playlsit");
+                                input = scanner.nextInt();
+                                switch (input) {
+                                    case 1:
+                                        Playlist.addPlaylsit();
+                                        break;
                                 }
+                                menu();
+                            }
+                            System.out.println("1 : Gestion PLaylist");
+                            System.out.println("2 : Gestion Musique");
+                            input = scanner.nextInt();
+                            switch (input) {
+                                case 1:
+                                    System.out.println("Choisissez votre option : \n");
+                                    System.out.println("1 : Changer Playlist");
+                                    System.out.println("2 : Ajouter Playlist");
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                            Playlist.changePlaylist();
+                                            break;
+                                        case 2:
+                                            Playlist.addPlaylsit();
+                                            break;
+                                    }
+                                    break;
+                                case 2:
+                                    System.out.println("Choisissez votre option : ");
+                                    System.out.println("1 : Ajout d'une Musique");
+                                    System.out.println("2 : Retirer une Musique");
+                                    System.out.println("3 : Afficher les Musiques");
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                            Musique.addMusique();
+                                            break;
+                                        case 2:
+                                            Musique.retirerMusique();
+                                            break;
+                                        case 3:
+                                            Musique.showMusique();
+                                            break;
+                                    }
                             }
                             break;
                         case 2:
@@ -155,8 +188,7 @@ public class Menu {
                                     break;
                                 } else if (reponse.equals("N")) {
                                     menu();
-                                }
-                                else {
+                                } else {
                                     System.out.println("Erreur, veuillez indiquer un caractère valide\n");
                                     menu();
                                 }
@@ -164,7 +196,6 @@ public class Menu {
                                 System.out.println("Erreur, veuillez indiquer un caractère valide\n");
                             }
                             menu();
-
                     }
             }
         } catch (Exception e) {
