@@ -54,6 +54,7 @@ public class Menu {
                             System.out.println("1 : Ajout d'un Patient");
                             System.out.println("2 : Retirer un Patient");
                             System.out.println("3 : Afficher les Patients");
+                            System.out.println("4 : Gestion Rendez-vous");
                             input = scanner.nextInt();
                             switch (input) {
                                 case 1:
@@ -65,7 +66,22 @@ public class Menu {
                                 case 3:
                                     Patient.showPatient();
                                     break;
+                                case 4:
+                                    System.out.println("\nChoisissez votre option : ");
+                                    System.out.println("1 : Ajout d'un Rendez-Vous");
+                                    System.out.println("2 : Voir les Rendez-Vous");
+                                    input = scanner.nextInt();
+                                    switch (input){
+                                        case 1:
+                                            Hopital.createRendezVous();
+                                            break;
+                                        case 2:
+                                            System.out.println(Semaine.Jours);
+                                            break;
+                                    }
+                                    break;
                             }
+                            menu();
                             break;
                         case 3:
                             System.out.println("Choisissez votre option : ");

@@ -1,5 +1,4 @@
 package com.company;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +19,7 @@ public class Hopital {
     }
 
     public static void addHopital(){
-        System.out.println("Ajouter combiens d'Hôpitaux ?");
+        System.out.println("Ajouter combien d'hôpitaux ?");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
         for (int i = 0; i < input; i++) {
@@ -29,7 +28,7 @@ public class Hopital {
             String name = scanner1.nextLine();
             System.out.println("Adresse de l'hôpital : ");
             String adress = scanner1.nextLine();
-            System.out.println("Specialitée de l'Hôpital ( '' )( '' )( '' ) : ");
+            System.out.println("Specialité de l'hôpital ( '' )( '' )( '' ) : ");
             String spec = scanner1.nextLine();
             System.out.println("Taille de l'hôpital : ");
             int taille = scanner1.nextInt();
@@ -40,7 +39,7 @@ public class Hopital {
 
     public static void changeHospital(){
         int nombreHopitaux = listeHopitaux.size();
-        System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponibles :");
+        System.out.println("Il y a " + nombreHopitaux + " Hopital(aux) disponible(s) :");
         int a = 1;
         for (int i = 0; i < nombreHopitaux; i++) {
             System.out.println(a + " : " + listeHopitaux.get(i).getName());
@@ -49,8 +48,67 @@ public class Hopital {
         System.out.println("Choisissez l'hôpital :");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
-        System.out.println("Vous avez choisis " + listeHopitaux.get(input-1).getName());
+        System.out.println("Vous avez choisi " + listeHopitaux.get(input-1).getName());
         actuelHopital = input-1;
+    }
+
+    public static void createRendezVous(){
+        System.out.println("Liste des praticiens disponibles\n");
+        Praticien.showPraticien();
+        System.out.println("Liste des Patients disponibles\n");
+        Patient.showPatient();
+        System.out.println("\nChoisissez le jour du rendez vous :");
+        int nombreJours = Semaine.Jours.size();
+        for (int i = 0; i < nombreJours; i++) {
+            i++;
+            System.out.println( i + " : " + " Jour " + i);
+            i--;
+        }
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt()-1;
+        List Jour = (List) Semaine.Jours.get(input);
+        System.out.println("Jour " + (input + 1));
+        for (int i = 0; i < Jour.size(); i++) {
+            System.out.println( (i + 1) + " : " + Jour.get(i));
+        }
+        input = scanner.nextInt();
+        int indexHour = input - 1;
+        Scanner demande = new Scanner(System.in);
+        System.out.println("Veuillez entrer le Matricule du Praticien");
+        String matricule = demande.nextLine();
+        try{
+            for (int i = 0; i < Praticien.listePraticien.size(); i++) {
+                if (Praticien.listePraticien.get(i).getMatriculNumber().equals(matricule)){
+                    break;
+                }
+                else{
+                    System.out.println("Veuillez indiquer un Matricule correct");
+                    createRendezVous();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Veuillez entrer le numéro de Sécu du Patient");
+        String secu = demande.nextLine();
+        try{
+            for (int i = 0; i < Patient.listePatients.size(); i++) {
+                if (Patient.listePatients.get(i).getNumSecu().equals(secu)){
+                    break;
+                }
+                else{
+                    System.out.println("Veuillez indiquer un numéro de Sécurité Sociale correct");
+                    createRendezVous();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String Heure = (String) Jour.get(indexHour);
+        Jour.remove(indexHour);
+        Jour.add(indexHour,Heure + "_" + " RDV : " + matricule + "-" + secu);
+        System.out.println(Jour);
+
     }
 
     public String getName() {
