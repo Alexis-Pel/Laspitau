@@ -28,6 +28,7 @@ public class Playlist {
             listePlaylists.add(playlist);
             System.out.println("Playlist créé !");
         }
+        Menu.menu();
     }
 
     public static void changePlaylist(){
@@ -43,6 +44,7 @@ public class Playlist {
         int input1 = scanner1.nextInt();
         System.out.println("Vous avez choisis " + listePlaylists.get(input1 - 1).getNomPlaylist());
         actualPlaylist = input1 - 1;
+        Menu.menu();
     }
 
     public String getNomPlaylist() {

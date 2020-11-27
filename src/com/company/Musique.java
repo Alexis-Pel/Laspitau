@@ -1,4 +1,5 @@
 package com.company;
+
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.*;
@@ -17,7 +18,7 @@ public class Musique {
         this.whichPlayliste = Playlist.actualPlaylist;
     }
 
-    public static void addMusique(){
+    public static void addMusique() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nom de la Musique :");
         String nomMusique = scanner.nextLine();
@@ -27,7 +28,7 @@ public class Musique {
         listeMusique.add(musique);
         System.out.println("Ajouter une autre Musique ? O / N");
         String input = scanner.next();
-        switch (input){
+        switch (input) {
             case "O":
                 addMusique();
                 break;
@@ -35,15 +36,16 @@ public class Musique {
                 Menu.menu();
                 break;
         }
+        Menu.menu();
     }
 
-    public static void retirerMusique(){
+    public static void retirerMusique() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez entrer le nom de la musique à retirer :");
         String input = scanner.nextLine();
-        try{
+        try {
             for (int i = 0; i < listeMusique.size(); i++) {
-                if (listeMusique.get(i).nomMusique.equals(input)){
+                if (listeMusique.get(i).nomMusique.equals(input)) {
                     listeMusique.remove(i);
                     System.out.println(" Musique supprimé avec succès\n");
                 }
@@ -51,39 +53,44 @@ public class Musique {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Menu.menu();
     }
 
-    public static void showMusique(){
-        if(listeMusique.isEmpty()){
+    public static void showMusique() {
+        if (listeMusique.isEmpty()) {
             System.out.println("Veuillez ajouter des musiques\n");
             Menu.menu();
         }
         for (int i = 0; i < listeMusique.size(); i++) {
             int playlist = listeMusique.get(i).whichPlayliste;
-            if(playlist== Playlist.actualPlaylist){
+            if (playlist == Playlist.actualPlaylist) {
                 System.out.println(listeMusique.get(i).getNomMusique() + " DE " + listeMusique.get(i).getNomArtiste());
             }
         }
+        Menu.menu();
     }
 
-    public static void changerPlusMusique(){
+    public static void changerPlusMusique() {
+        if (listeMusique.size() <= actualMusic) {
+            System.out.println("impossible de faire cette action");
+        } else {
             actualMusic += 1;
             showActualMusique();
-   }
-
-   public static void changerMoinsMusique(){
-        if (actualMusic <= 0){
-            System.out.println("Impossible pas d'autre chanson apres");
         }
-        else {
+    }
+
+    public static void changerMoinsMusique() {
+        if (actualMusic <= 0) {
+            System.out.println("Impossible pas d'autre chanson apres");
+        } else {
             actualMusic -= 1;
             showActualMusique();
         }
-   }
-    public static void showActualMusique(){
-        System.out.println(listeMusique.get(actualMusic).getNomMusique());
     }
 
+    public static void showActualMusique() {
+        System.out.println(listeMusique.get(actualMusic).getNomMusique());
+    }
 
 
     public String getNomMusique() {
