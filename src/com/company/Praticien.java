@@ -100,6 +100,20 @@ public class Praticien {
         }
     }
 
+    /***
+     * Affilie un praticien à un patient
+     */
+    public static void linkPraticienPatient(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choisissez le praticien que vous voulez lier");
+        Praticien.showPraticien();
+        int choixPraticien = scanner.nextInt();
+        System.out.println("Choisissez le patient que vous voulez lier a ce practicien");
+        Patient.showPatient();
+        int choixPatient = scanner.nextInt();
+        System.out.println("Le praticien " + listePraticien.get(choixPraticien - 1).getName() + " " + listePraticien.get(choixPraticien - 1).getLastName() + " est lié au patient " + Patient.listePatients.get(choixPatient - 1).getName() + " " + Patient.listePatients.get(choixPatient - 1).getLastName());
+    }
+
     public String getMatriculNumber() {
         return matriculNumber;
     }
