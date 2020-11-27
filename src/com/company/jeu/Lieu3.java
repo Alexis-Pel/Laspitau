@@ -3,12 +3,10 @@ package com.company.jeu;
 import com.company.Logger;
 import com.company.Menu;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Lieu3 {
-    public static void Lieu3() throws FileNotFoundException, UnsupportedEncodingException {
+    public static void Lieu3()  {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n\nVous êtes a l’intérieur d’un building en brique, un petit refuge pour les bêtes. Un homme\n" +
@@ -23,7 +21,6 @@ public class Lieu3 {
             }else if (Dir.equals("Q") || Dir.equals("q")){
                 Logger log = new Logger("Vous avez quitter la partie");
                 Menu.menu();
-
             }
             else{
                 System.out.println("Erreur, veuillez réessayer");

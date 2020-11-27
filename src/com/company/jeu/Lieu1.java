@@ -3,14 +3,12 @@ package com.company.jeu;
 import com.company.Logger;
 import com.company.Menu;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Lieu1 {
 
 
-    public static void Lieu1() throws FileNotFoundException, UnsupportedEncodingException {
+    public static void Lieu1() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n\nVous êtes au bout de la route devant un petit immeuble en brique. Un petit ruisseau coule\n" +
