@@ -1,23 +1,30 @@
 package com.company;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.*;
 
 public class Musique {
 
     private String nomMusique;
     private String nomArtiste;
-    private int whichPlayliste;
+    private int whichPlaylist;
     public static List<Musique> listeMusique = new ArrayList<>();
     public static int actualMusic = 0;
 
+
+    /***
+     * Constructeur d'un Hopital
+     * @param nomMusique Le nom de la Musique
+     * @param nomArtiste Le nom de l'Artiste$
+     */
     public Musique(String nomMusique, String nomArtiste) {
         this.nomMusique = nomMusique;
         this.nomArtiste = nomArtiste;
-        this.whichPlayliste = Playlist.actualPlaylist;
+        this.whichPlaylist = Playlist.actualPlaylist;
     }
 
+    /***
+     * Permet d'ajouter une Musique
+     */
     public static void addMusique() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nom de la Musique :");
@@ -39,6 +46,9 @@ public class Musique {
         Menu.menu();
     }
 
+    /***
+     * Permet de retirer une Musique
+     */
     public static void retirerMusique() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez entrer le nom de la musique à retirer :");
@@ -56,13 +66,16 @@ public class Musique {
         Menu.menu();
     }
 
+    /***
+     * Permet de montrer les Musiques de la playlist
+     */
     public static void showMusique() {
         if (listeMusique.isEmpty()) {
             System.out.println("Veuillez ajouter des musiques\n");
             Menu.menu();
         }
         for (int i = 0; i < listeMusique.size(); i++) {
-            int playlist = listeMusique.get(i).whichPlayliste;
+            int playlist = listeMusique.get(i).whichPlaylist;
             if (playlist == Playlist.actualPlaylist) {
                 System.out.println(listeMusique.get(i).getNomMusique() + " DE " + listeMusique.get(i).getNomArtiste());
             }
@@ -70,24 +83,37 @@ public class Musique {
         Menu.menu();
     }
 
-    public static void changerPlusMusique() {
-        if (listeMusique.size() <= actualMusic) {
-            System.out.println("impossible de faire cette action");
-        } else {
+    /***
+     * Permet de passer à la musique suivante
+     */
+    public static void changerPlusMusique(){
+        if(actualMusic == listeMusique.size()-1){
+            actualMusic = 0;
+            showActualMusique();
+        }
+        else{
             actualMusic += 1;
             showActualMusique();
         }
-    }
 
-    public static void changerMoinsMusique() {
-        if (actualMusic <= 0) {
-            System.out.println("Impossible pas d'autre chanson apres");
-        } else {
+   }
+
+    /***
+     * Permet de passer a la musique précédente
+     */
+   public static void changerMoinsMusique(){
+        if (actualMusic <= 0){
+            actualMusic = listeMusique.size() - 1;
+        }
+        else {
             actualMusic -= 1;
             showActualMusique();
         }
     }
 
+    /***
+     * Permet d'afficher la Musique en cours d'écoute
+     */
     public static void showActualMusique() {
         System.out.println(listeMusique.get(actualMusic).getNomMusique());
     }

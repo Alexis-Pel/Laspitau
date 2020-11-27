@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         Logger log = new Logger("je marche ");
         //Semaine.createDays();
+        Semaine.createDays();
 	    Menu.menu();
     }
 }
