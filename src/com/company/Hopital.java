@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Hopital {
+    public static int rooms;
     private String name;
     private String adress;
     private String special;
@@ -29,6 +30,7 @@ public class Hopital {
      * Permet d'ajouter un Hopital
      */
     public static void addHopital(){
+        Patient.setNombrePatients();
         System.out.println("Ajouter combien d'hôpitaux ?");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
@@ -64,6 +66,7 @@ public class Hopital {
             int input = scanner.nextInt();
             System.out.println("Vous avez choisi " + listeHopitaux.get(input-1).getName());
             actuelHopital = input-1;
+            Patient.setNombrePatients();
         } catch (Exception e) {
             System.out.println("Erreur, veuillez indiquer un chiffre valide");
             changeHospital();

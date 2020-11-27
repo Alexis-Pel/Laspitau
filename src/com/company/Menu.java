@@ -14,8 +14,8 @@ public class Menu {
         System.out.println("Choisissez votre option :");
         System.out.println("1 : Administration ");
         System.out.println("2 : Animation");
-        int input = scanner.nextInt();
         try {
+            int input = scanner.nextInt();
             switch (input) {
                 case 1:
                     System.out.println("\n -- Administration du groupe -- \n");
@@ -48,6 +48,7 @@ public class Menu {
                                 System.out.println("Choisissez votre option : \n");
                                 System.out.println("1 : Changer Hopital");
                                 System.out.println("2 : Ajouter Hopital");
+                                System.out.println("3 : Afficher places disponibles");
                                 input = scanner.nextInt();
                                 switch (input) {
                                     case 1:
@@ -56,7 +57,14 @@ public class Menu {
                                     case 2:
                                         Hopital.addHopital();
                                         break;
+                                    case 3:
+                                        Patient.setNombrePatients();
+                                        int taille = Hopital.listeHopitaux.get(Hopital.actuelHopital).getTaille();
+                                        taille = taille - Patient.nombrePatients;
+                                        System.out.println("Places disponibles : " + taille);
+                                        break;
                                 }
+                                menu();
                                 break;
                             case 2:
                                 System.out.println("Choisissez votre option : ");
@@ -268,7 +276,8 @@ public class Menu {
                     }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erreur, veuillez indiquer une commande valide");
+            menu();
         }
     }
 }
