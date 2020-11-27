@@ -70,19 +70,23 @@ public class Musique {
         Menu.menu();
     }
 
-    public static void changerPlusMusique() {
-        if (listeMusique.size() <= actualMusic) {
-            System.out.println("impossible de faire cette action");
-        } else {
+    public static void changerPlusMusique(){
+        if(actualMusic == listeMusique.size()-1){
+            actualMusic = 0;
+            showActualMusique();
+        }
+        else{
             actualMusic += 1;
             showActualMusique();
         }
-    }
 
-    public static void changerMoinsMusique() {
-        if (actualMusic <= 0) {
-            System.out.println("Impossible pas d'autre chanson apres");
-        } else {
+   }
+
+   public static void changerMoinsMusique(){
+        if (actualMusic <= 0){
+            actualMusic = listeMusique.size() - 1;
+        }
+        else {
             actualMusic -= 1;
             showActualMusique();
         }

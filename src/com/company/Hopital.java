@@ -59,10 +59,15 @@ public class Hopital {
             a++;
         }
         System.out.println("Choisissez l'hôpital :");
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-        System.out.println("Vous avez choisi " + listeHopitaux.get(input-1).getName());
-        actuelHopital = input-1;
+        try{
+            Scanner scanner = new Scanner(System.in);
+            int input = scanner.nextInt();
+            System.out.println("Vous avez choisi " + listeHopitaux.get(input-1).getName());
+            actuelHopital = input-1;
+        } catch (Exception e) {
+            System.out.println("Erreur, veuillez indiquer un chiffre valide");
+            changeHospital();
+        }
     }
 
     /***

@@ -5,8 +5,7 @@ import java.io.UnsupportedEncodingException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        Logger log = new Logger("Nouveau log");
-        //Semaine.createDays();
+        Semaine.createDays();
 	    Menu.menu();
     }
 }

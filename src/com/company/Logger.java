@@ -1,7 +1,5 @@
 package com.company;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 public class Logger {
     PrintWriter writer = new PrintWriter("mon-fichier.txt", "UTF-8");
