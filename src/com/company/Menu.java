@@ -109,6 +109,7 @@ public class Menu {
                                 System.out.println("1 : Ajout d'un Praticien");
                                 System.out.println("2 : Retirer un Praticien");
                                 System.out.println("3 : Afficher les Praticiens");
+                                System.out.println("4 : Rattacher un Praticien avec un patient");
                                 input = scanner.nextInt();
                                 switch (input) {
                                     case 1:
@@ -120,7 +121,12 @@ public class Menu {
                                     case 3:
                                         Praticien.showPraticien();
                                         break;
+                                    case 4:
+                                        Praticien.linkPraticienPatient();
+                                        break;
                                 }
+                                menu();
+                                break;
                             case 4:
                                 System.out.println("Choisissez votre option : ");
                                 System.out.println("1 : Ajout de Médicaments");
