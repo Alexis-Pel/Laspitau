@@ -1,12 +1,9 @@
 package com.company;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        Logger log = new Logger("je marche ");
-        //Semaine.createDays();
+    public static void main(String[] args) throws IOException {
         Semaine.createDays();
 	    Menu.menu();
     }

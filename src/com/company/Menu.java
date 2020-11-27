@@ -147,17 +147,30 @@ public class Menu {
                         case 1:
                             System.out.println("\n -- Laspitau Music -- \n");
                             if (!Playlist.listePlaylists.isEmpty()) {
-                                System.out.println(" - Playlist " + Playlist.listePlaylists.get(Playlist.actualPlaylist).getNomPlaylist() + " -");
+                                    System.out.println(" - Playlist " + Playlist.listePlaylists.get(Playlist.actualPlaylist).getNomPlaylist() + " -");
                             }
                             System.out.println("Choisissez votre option :");
                             if (Playlist.listePlaylists.isEmpty()) {
-                                System.out.println("1 : Ajouter Playlist");
-                                input = scanner.nextInt();
-                                switch (input) {
-                                    case 1:
-                                        Playlist.addPlaylist();
-                                        break;
+                                System.out.println("Voulez vous importer des playlists/musiques ? ");
+                                System.out.println("1 : Oui");
+                                System.out.println("2 : Non");
+                                try{
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                            Import imp = new Import();
+                                            System.out.println("Playlist importée avec succès");
+                                            menu();
+                                            break;
+                                        case 2:
+                                            Playlist.addPlaylist();
+                                            break;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Erreur, retour au menu");
+                                    menu();
                                 }
+
                                 menu();
                             }
                             System.out.println("1 : Gestion PLaylist");

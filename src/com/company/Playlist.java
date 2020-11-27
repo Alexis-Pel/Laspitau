@@ -33,7 +33,7 @@ public class Playlist {
             String namePlaylist = scanner1.nextLine();
             Playlist playlist = new Playlist(namePlaylist);
             listePlaylists.add(playlist);
-            System.out.println("Playlist créé !");
+            System.out.println("Playlist créée!");
         }
         Menu.menu();
     }
