@@ -1,5 +1,6 @@
 package com.company.jeu;
 
+import com.company.Logger;
 import com.company.Menu;
 
 import com.company.Menu;
@@ -14,12 +15,16 @@ public class Lieu5 {
         try{
             String Dir = scanner.nextLine();
             if (Dir.equals("SUD") || Dir.equals("sud")) {
+                Logger log = new Logger("Vous avez prit la direction du Sud");
                 Lieu1.Lieu1();
+
             }else if (Dir.equals("Q") || Dir.equals("q")){
+                Logger log = new Logger("Vous avez quitter la partie");
                 Menu.menu();
             }
             else{
                 System.out.println("Erreur, veuillez réessayer");
+                Logger log = new Logger("Vous avez commis une erreur");
                 Lieu5();
             }
         } catch (Exception e) {
