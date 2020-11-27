@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,11 +12,17 @@ public class Playlist {
     public static int actualPlaylist = 0;
 
 
+    /***
+     * Constructeur d'un Hopital
+     * @param nomPlaylist Le nom de l'hopital
+     */
     public Playlist(String nomPlaylist) {
         this.nomPlaylist = nomPlaylist;
     }
 
-
+    /***
+     * Permet d'ajouter une Playlist
+     */
     public static void addPlaylist() {
         System.out.println("Combien de playlist voulez vous créer ?+");
         Scanner scanner = new Scanner(System.in);
@@ -31,6 +38,9 @@ public class Playlist {
         Menu.menu();
     }
 
+    /***
+     * Permet de changer de PLaylist
+     */
     public static void changePlaylist(){
         int nombrePlaylist = listePlaylists.size();
         System.out.println("Il y a " + nombrePlaylist + " Playlist disponibles :");
